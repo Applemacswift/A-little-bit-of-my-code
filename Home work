@@ -1,0 +1,310 @@
+let age = 25
+print("Возраст человека: \(age)\n")
+
+let moscowPopulation = 12.5
+print("Население Москвы: \(moscowPopulation) миллионов человек\n")
+
+let starsGalaxy = 400
+print("Звезд в галактике: \(starsGalaxy)\n")
+
+let angleOfTheTriangle: Int8 = 10
+print("Угол треугольника равен \(angleOfTheTriangle) градусам\n")
+
+let salary: Float = 1.2
+print("Иван получил среднюю зарплату за 2020 год в размере \(salary) млн. руб.\n ")
+
+let shapeСolor = "красный"
+let shapeСolorInNumbersRgb1 = 255
+let shapeСolorInNumbersRgb2 = 0
+let shapeСolorInNumbersRgb3 = 0
+
+print("Цвет фигуры \(shapeСolor) и имеет цифровой GRB \(shapeСolorInNumbersRgb1), \(shapeСolorInNumbersRgb2), \(shapeСolorInNumbersRgb3)\n ")
+
+let pipe = 22.57
+print("Длина трубы: \(pipe) мм\n")
+
+let pistonCup: Float = 5.3343443455
+print("Диаметр стакана поршня равен \(pistonCup) см\n")
+
+let human = "Chepkasov"
+print("У кандидата наук фамилия: \(human) \n")
+
+let oneYears = 4
+print("В одном году \(oneYears) сезонa\n")
+
+let genderOfThePerson = "мужской пол"
+print("Вы знали, что у Натальи в прошлом был \(genderOfThePerson)?\n")
+
+var firstEmployee = 55_000
+var secondEmployee = 40_000
+let thirdEmployee = 70_000
+
+firstEmployee *= 2
+secondEmployee += 15000
+
+print(firstEmployee)
+print(secondEmployee)
+print(thirdEmployee)
+
+
+
+var greeting = "Hello, playground"
+
+var firstEmployee = 55_000
+var secondEmployee = 40_000
+let thirdEmployee = 70_000
+
+firstEmployee *= 2
+secondEmployee += 15000
+
+print(firstEmployee)
+print(secondEmployee)
+print(thirdEmployee)
+
+if firstEmployee > thirdEmployee {
+    print("Зарплата первого сотрудника больше третьего")
+}
+if secondEmployee < firstEmployee {
+    print("Зарплата второго сотрудника меньше зарплаты первого")
+}
+if firstEmployee > secondEmployee || thirdEmployee < secondEmployee {
+    print("Зарплата первого сутрудника больше второго или зарплата третьего сотрудника меньше второго")
+}
+if thirdEmployee < firstEmployee && secondEmployee > firstEmployee {
+    print("Зарплата третьего сотрудника меньше зарплаты первого и зарплата второго сотрудника больше зарплаты первого")
+}
+
+let a = 5
+let b = 10
+let c = 15
+
+var d = b * b - 4 * a * c
+
+if d > 0 {
+    print("график скорее всего продолжит направление")
+}
+if d < 0 {
+    print("график скорее всего поменяет направление")
+}
+if d == 0 {
+    print("неопределенная ситуация — нужно ждать")
+}
+
+var equation: () = d < 0 ? print("график скорее всего продолжит направление") : print("график скорее всего поменяет направление")
+
+switch d > 0 {
+case d > 0:
+    print("график скорее всего продолжит направление\n")
+case d < 0:
+    print("график скорее всего поменяет направление\n")
+case d == 0:
+    print("неопределенная ситуация — нужно ждать\n")
+default:
+    break
+}
+
+let male = false
+let age = 65
+
+switch age {
+case 3...17:
+    if male != true {
+        print("Детский контент для девочек")
+    } else {
+        print("Детский контент для мальчиков")
+    }
+case 18...65:
+    if male != true {
+        print("Взрослый контент для женщин")
+    } else {
+        print("Взрослый контент для мужчин")
+    }
+case 66...age:
+    if male != true {
+        print("Контент для женщин пожилого возраста")
+    } else {
+        print("Контент для мужчин пожилого возраста")
+}
+default:
+    print("Нет подходящего контента")
+    break
+}
+ 
+ 
+ 
+ var greeting = "Hello, playground"
+
+let one: String? = "Ivan"
+let two: String? = "Petr"
+let three: String? = nil
+
+let firstName = one ?? "Aleksandr"
+print(firstName)
+let secondName = two ?? "Andrew"
+print(secondName)
+let thirdName = three ?? "Marina" // Есть разница, так как у нас было значение nil и мы проверили действительно ли там пусто,
+print(thirdName)                // а если не пусто, то присвоили туда значение, без краша программы
+
+var a = "10"
+var b = "20"
+var c = "30"
+var d = "Andrew29"
+var e = "Chepkasov1992"
+var sum = 0
+
+if let sum1 = Int(a) {
+    sum += sum1
+} else {
+    print("Строка не содержит число")
+}
+if let sum2 = Int(b) {
+    sum += sum2
+} else {
+    print("Строка не содержит число")
+}
+if let sum3 = Int(c) {
+    sum += sum3
+} else {
+    print("Строка не содержит число")
+}
+if let sum4 = Int(d) {
+    sum += sum4
+} else {
+    print("Строка не содержит число")
+}
+if let sum5 = Int(e) {
+    sum += sum5
+} else {
+    print("Строка не содержит число")
+}
+print(sum)
+
+var temp: Int?
+temp = Int("-25")
+
+if temp != nil && temp! > 9 {
+    print("Погода явно меняется в лучшую сторону, ожидается потепление. Сегодня температура \(temp!) градусов")
+} else if temp != nil && temp! > 0 {
+    print("Сегодня ожидается потепление, наступает весна, температура будет в районе \(temp!) градусов")
+} else if temp != nil && temp! < -9 {
+    print("На юге в горах, температура достигнет \(temp!) градусов")
+} else if temp != nil && temp! < 0 {
+    print("Ночью температура за окном понизится до \(temp!) градусов")
+} else {
+    print("Сегодня данные по погоде еще не передавали")
+}
+
+
+
+
+var boysStudents = ["Misha", "Kirill"]
+var girlsStudents = ["Marina", "Alena", "Kristina"]
+var students = girlsStudents
+
+for boysStudent in boysStudents {
+    students.insert(boysStudent, at: 0)
+}
+students
+
+students.sort()
+print(students)
+
+var evaluations = [2,3,2,5,4,2,5,4]
+evaluations.sort { left, right in
+    left > right
+}
+
+let positiveNumbers = evaluations.filter { num in
+    num > 3
+}
+print(positiveNumbers)
+
+let numbers = [1, 2, 3, 4, 7, 8, 15]
+let sum = 6
+
+for i in 0..<numbers.count {
+    for j in i..<numbers.count {
+        if numbers[i] + numbers[j] == sum {
+            print(i, j)
+        }
+    }
+}
+
+
+
+var theFirstPerson = (favoriteMovie: "Avatar",
+                 favoriteNum: "20",
+                 favoriteFood: "Carbonara")
+
+let (movie, num, food) = theFirstPerson
+movie
+num
+food
+
+var theSecondPerson = (favoriteMovie: "Men in black",
+                     favoriteNum: "7",
+                     favoriteFood: "barbecue")
+
+var guest = theFirstPerson
+guest = theSecondPerson
+
+var numbers = (theFirstPerson.favoriteNum, theSecondPerson.favoriteNum)
+
+if numbers.0 != numbers.1 {
+    let a: Int = Int(numbers.0)!
+    let b: Int = Int(numbers.1)!
+    let c = a - b
+    print("Разница между числами первого и второго кортежа равна: \(c)")
+}
+
+let numOfItems = ["Математика" : 5, "Русский язык" : 3, "История" : 4]
+let students = ["Andrew" : numOfItems]
+students["Andrew"]
+
+typealias Chessman = [String: (alpha: Character, num: Int)?]
+var chessmans: Chessman = ["Белый король" : ("b", 5), "Слон" : ("d", 3), "Конь" : nil
+
+if let info = chessmans["Конь"] as? (Character, Int) {
+    print("Фигура сейчас на координатах: \(info)\n")
+} else {
+    print("Вас подбили, фигура уничтожена\n")
+}
+
+chessmans.forEach { (key: String, value: (alpha: Character, num: Int)?) in
+    if let _ = value {
+        print("Проверка по фигурам завершена. \(key) на координатах: \(value!)")
+    }
+}
+
+
+
+var textbooks: [String] = []
+
+func addTextbook (forBook name: String) {
+    textbooks.append(name)
+}
+addTextbook(forBook: "History")
+addTextbook(forBook: "English")
+
+func deleteTextbook (forBook name: String) {
+    textbooks = textbooks.filter({ $0 != name })
+}
+textbooks
+deleteTextbook(forBook: "English")
+print(textbooks)
+
+func calculatePoints (forUsers array: [Int: Double]) -> [Int: Int] {
+    var myUserPoints: [Int: Int] = array.mapValues(Int.init)
+    for (key, value) in myUserPoints {
+        myUserPoints[key] = value / 10
+    }
+    return myUserPoints
+}
+print(calculatePoints(forUsers: userPoints))
+
+func calculateSumEvenOddValues(from array: [Int?]) -> (Int, Int) {
+    // TODO: выполнить код
+    return (0,0)
+}
+
+calculateSumEvenOddValues(from: arrayOfNumbers)
