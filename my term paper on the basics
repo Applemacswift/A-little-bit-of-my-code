@@ -1,0 +1,24 @@
+var busStops = ["Ленина": 0,
+                "Кировский проспект": 10+15,
+                "Площадь": 25+10,
+                "Вокзал": 35+15,
+                "Ломоносова": 50+10,
+                "Северная": 60+13,
+                "Южная": 73+15]
+
+
+func busTimeCalculation (initial start: String, final stop: String) -> Int {
+    let x:Int = (busStops[start] ?? 0) - (busStops[stop] ?? 0)
+
+    if busStops[start] == nil {
+        print("Такой остановки не существует, проверьте правильность введенных данных начальной станции")
+    } else if  busStops[stop] == nil {
+        print("Такой остановки не существует, проверьте правильность введенных данных конечной станции")
+    } else if x < 0 {
+        print(-x)
+    } else if x > 0 {
+        print(x)
+    }
+    return(x)
+}
+busTimeCalculation(initial: "Вокзал", final: "Северная")
