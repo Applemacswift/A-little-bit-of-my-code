@@ -1,0 +1,234 @@
+НАСЛЕДОВАНИЕ:
+    ПРИМЕР 1:
+Объявляем класс "Человек" (все люди ведь одинаково выглядят, есть 2 ноги и 2 руки, 1 голова)
+дальше создаем другой класс девочка и допустим мальчик и наследуемся от класса человек,
+основные ведь параметры у них одинаковые.
+    ПРИМЕР 2:
+Класс мебель, наследником будет диван со своими характеристиками, а объектом будет конкретная фирма дивана
+
+ПОЛИМОРФИЗМ:
+    ПРИМЕР 1:
+Допустим мы создали протокол = в котором есть метод стрелять, дальше мы хотим использовать класс танки и объекты
+классификация разных танков, каждый ведь танк умеет стрелять, вот мы и присваиваем свой протокол к классу и каждому объекту
+    ПРИМЕР 2:
+Создали протокол летать, далее всем объектам класса воздушное судно присвоили им наш протокол
+
+
+                                                 ЗАДАЧА №2
+
+  ПРИМЕР 1:
+ класс: человек
+ объект: девочка
+ свойства: расса, знание языка, рост, вес
+ метод: ходить, кушать, разговаривать
+
+    ПРИМЕР 2:
+ класс: военная техника
+ объект: танк
+ свойства: размер дула, вес, характеристики гусенницы
+ метод: ездить, стрелять
+
+    ПРИМЕР 3:
+ класс: бытовая техника
+ объект: телевизор
+ свойства: диагональ, марка, количество портов
+ метод: переключать каналы, настройка каналов, проигрывание музыки
+*/
+
+// Задание 1
+enum WeekDay {
+    case monday
+    case tuesday
+    case wednsday
+    case thursday
+    case friday
+    case saturday
+    case sunday
+}
+
+struct AboutMe {
+    let gender = "Мужчина"
+    let name = "Andrew"
+    let age = "29"
+}
+
+class Pilot {
+    var name: String
+    var experienceHours: Int
+
+    init(name: String, experienceHours: Int) {
+        self.name = name
+        self.experienceHours = experienceHours
+    }
+
+    func skill() {
+        if experienceHours > 50 && experienceHours < 100 {
+            print("При \(experienceHours) часов налета, \(name) будет иметь квалификацию лейтенант воздушного судна")
+        } else if experienceHours > 100 {
+            print("При \(experienceHours) часов налета, \(name) будет иметь квалификацию капитан воздушного судна")
+        } else {
+            print("Сейчас \(name) имеет звание любителя")
+        }
+    }
+}
+
+let playerOne = Pilot.init(name: "Andrew", experienceHours: 60)
+let playerTwo = Pilot.init(name: "Ivan", experienceHours: 23)
+let playerThree = Pilot.init(name: "Ksenia", experienceHours: 1210)
+
+playerOne.skill()
+playerTwo.skill()
+playerThree.skill()
+
+// Задание 2
+/*  Пример агрегации один:
+ Мы создали класс компрессор и используем этот класс в качестве параметров всех классов и объектов холодильников
+    Пример агрегации два:
+ Мы создали структуру видео-микрочипа и используем его в качестве параметров в любом классе и объекте видеокарты
+ТО ЕСТЬ перечисленное выше, компрессор и видео-микрочип это отдельный объект. Ссылка на объект, существующая в других объектах
+
+    Пример композиции один:
+ Мы создаем внутри класса микрочип материал(ПО) из чего он будет состоять, как будет запрограммирован и будут конкректные свойства использовать только для этого микрочипа
+    Пример композиции два:
+ Мы внутри нашего объекта компрессор создаем неизменяемые перечисления из чего будет конкретно состоять компрессор и прячем все это private
+ */
+
+//                                          ЗАДАЧА № 1
+enum TvCanal {
+    case tnt
+    case russia
+    case music
+    case news
+    case actionMovie
+    case canalOne
+}
+
+class Tv {
+    var company: String, model: Int
+    var currentChannel: TvCanal = .tnt
+
+    init(company: String, model: Int) {
+        self.company = company
+        self.model = model
+    }
+
+    func playCurrentCanal() {
+        print("Сейчас показывает: \(currentChannel)")
+    }
+
+    func on(onOff: Bool) {
+        onOff == true ? print("Телевизор включен") : print("Телевизор выключен")
+    }
+}
+
+let samsung = Tv.init(company: "Samsung", model: 5000)
+samsung.on(onOff: true)
+samsung.on(onOff: false)
+samsung.playCurrentCanal()
+samsung.currentChannel = .news
+samsung.playCurrentCanal()
+
+//                                              ЗАДАЧА № 2
+struct SettingsTv {
+    var volume: Double = 0
+    var colorTvOnOff = true
+
+    mutating func add() {
+        if self.volume != 1 {
+            self.volume += 0.1
+        }
+        print("Громкость = \(volume)")
+    }
+
+    mutating func reduce() {
+        if self.volume != 0 {
+            self.volume -= 0.1
+        }
+        print("Громкость = \(volume)")
+    }
+
+    func colorTv(onOff: Bool) {
+        onOff == true ?
+        print("Сейчас включен режим цветного просматривания фильмов")
+        :
+        print("Цветопередача отключена, просмотр в режиме черно/белого экрана")
+    }
+}
+
+class TvSecond: Tv {
+    var volume = SettingsTv()
+    let settings = SettingsTv()
+}
+
+let lg = TvSecond.init(company: "LG", model: 2525)
+lg.volume.add()
+lg.volume.add()
+lg.volume.reduce()
+lg.settings.colorTv(onOff: true)
+lg.settings.colorTv(onOff: false)
+lg.on(onOff: false)
+
+
+enum Country {
+    case UK
+    case USA
+    case France
+}
+
+struct Track {
+    let title: String
+    let performer: String
+    let duration: Int
+    let country: Country
+}
+
+class Category {
+    var name: String
+    private lazy var tracks = [Track]()
+    var amountOfTracks: Int {
+        return tracks.count
+    }
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    func addTrack(_ track: Track) {
+        tracks.append(track)
+    }
+    
+    func removeTrackWith(title: String) {
+        if let index = tracks.firstIndex(where: {$0.title == title}) {
+            tracks.remove(at: index)
+        }
+    }
+    
+    func printSelf() {
+        print("Category: \(name), amount of tracks: \(amountOfTracks)")
+        for (i, track) in tracks.enumerated() {
+            print(" \(i+1). \(track.title), \(track.performer), \(track.duration) sec, \(track.country)")
+        }
+    }
+}
+
+
+let track1 = Track(title: "Title1", performer: "Perf1", duration: 100, country: .France)
+let track2 = Track(title: "Title2", performer: "Perf2", duration: 110, country: .UK)
+let track3 = Track(title: "Title3", performer: "Perf3", duration: 120, country: .USA)
+
+let category = Category(name: "Grindcore")
+category.addTrack(track1)
+category.addTrack(track2)
+category.addTrack(track3)
+
+category.printSelf()
+
+category.removeTrackWith(title: "Title2")
+
+category.printSelf()
+
+
+class Libraries {
+    var listCategories = [Category]()
+}
+
